@@ -1,32 +1,32 @@
 language: php
 php:
 - 7.4
-install:
-- composer install
+#install:
+#- composer install
 stages:
-- test
-- build
-- deploy
+- test-api-key
+#- build
+#- deploy
 jobs:
   include:
   - stage: test-api-key
     name: Test API Key
     script: echo $GITHUB_API_KEY
-  - stage: test
-    name: Unit Tests
-    script: vendor/bin/phpunit -c phpunit.xml
-  - stage: build
-    name: Create phar build
-    script: vendor/bin/phar-builder --output=build/ --name=response2schema.phar --no-dev
-      --shebang --entry-point=bin/response2schema --excluded=.gitignore,.travis.yml,phpunit.xml
-      --gzip -n
-env:
-- GITHUB_API_KEY=
-deploy:
-  provider: releases
-  api_key:
-    secure: "${GITHUB_API_KEY}"
-  file: build/response2schema.phar
-  on:
-    repo: dsuurlant/response2schema
-  skip_cleanup: 'true'
+#  - stage: test
+#    name: Unit Tests
+#    script: vendor/bin/phpunit -c phpunit.xml
+#  - stage: build
+#    name: Create phar build
+#    script: vendor/bin/phar-builder --output=build/ --name=response2schema.phar --no-dev
+#      --shebang --entry-point=bin/response2schema --excluded=.gitignore,.travis.yml,phpunit.xml
+#      --gzip -n
+#env:
+#- GITHUB_API_KEY=
+#deploy:
+#  provider: releases
+#  api_key:
+#    secure: "${GITHUB_API_KEY}"
+#  file: build/response2schema.phar
+#  on:
+#    repo: dsuurlant/response2schema
+#  skip_cleanup: 'true'
