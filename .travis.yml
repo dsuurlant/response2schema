@@ -24,4 +24,4 @@ deploy:
   file: build/response2schema.phar
   on:
     repo: dsuurlant/response2schema
-  skip_cleanup: 'true'
+  cleanup: 'true'
