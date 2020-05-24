@@ -13,9 +13,7 @@ jobs:
     script: vendor/bin/phpunit -c phpunit.xml
   - stage: build
     name: Create phar build
-    script: vendor/bin/phar-builder --output=build/ --name=response2schema.phar --no-dev
-      --shebang --entry-point=bin/response2schema --excluded=.gitignore,.travis.yml,phpunit.xml
-      --gzip -n
+    script: vendor/bin/phar-builder package -e bin/response2schema -z --name response2schema.phar -o build
 deploy:
   provider: releases
   token: $GITHUB_TOKEN
