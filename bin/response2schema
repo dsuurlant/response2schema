@@ -1,0 +1,70 @@
+#!/usr/bin/env php
+<?php
+
+# Autoload files
+foreach ([__DIR__ . '/../../../autoload.php', __DIR__ . '/../vendor/autoload.php'] as $file) {
+    if (file_exists($file)) {
+        require $file;
+        break;
+    }
+}
+
+function showHelp() {
+    fwrite(STDOUT, <<<OUTPUT
+Usage: response2schema [inputfile] [outputfile]
+
+Response2Schema will accept input in application/json; this is the typical response you may receive from an API.
+It will infer the format you want the OpenAPI spec to be generated in from the output file path.
+
+Response2Schema cannot guess beyond basic types; it cannot infer oneOf, enums, minimum/maximum numbers, and so on.
+This tool is meant to bootstrap your OpenAPI specification, nothing more. 
+
+Valid formats: yaml, json
+
+Example:
+    response2schema response.json openapi.yaml
+
+
+OUTPUT
+    );
+    exit(0);
+}
+
+$inputPath = null;
+$outputPath = null;
+
+foreach($argv as $k => $arg) {
+    if ($k === 0) {
+        continue;
+    }
+
+    // Input
+    if ($k === 1) {
+        if (!is_string($arg)) {
+            echo "Input file path invalid.";
+            exit(1);
+        }
+        if ($arg === 'help' || $arg === '--help') {
+            showHelp();
+        }
+        $inputPath = $arg;
+    }
+
+    // Output
+    if ($k === 2) {
+        if (!is_string($arg)) {
+            echo 'Output file path invalid.';
+            exit(1);
+        }
+        $outputPath = $arg;
+    }
+}
+
+try {
+    \DSuurlant\Response2Schema\Response2Schema::generate($inputPath, $outputPath);
+    fwrite(STDOUT, "Generation successful." . PHP_EOL);
+} catch (DomainException $exception) {
+    fwrite(STDERR, $exception->getMessage() . PHP_EOL);
+}
+
+exit(0);

@@ -1,0 +1,36 @@
+{
+    "name": "dsuurlant/response2schema",
+    "description": "Generate an OpenAPI schema definition for an object based on a JSON response.",
+    "type": "library",
+    "license": "MIT",
+    "minimum-stability": "stable",
+    "keywords": [
+        "openapi"
+    ],
+    "authors": [
+        {
+            "name": "Danielle Suurlant",
+            "email": "danielle@binarystar.nl"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "DSuurlant\\Response2Schema\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "DSuurlant\\Response2Schema\\Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "php": "^7.4",
+        "ext-json": "*",
+        "cebe/php-openapi": "^1.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.1",
+        "symfony/var-dumper": "^5.0",
+        "fzaninotto/faker": "^1.9"
+    }
+}
