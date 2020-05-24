@@ -5,19 +5,8 @@ install:
 - composer install
 stages:
 - test
-- build
 jobs:
   include:
   - stage: test
     name: Unit Tests
     script: vendor/bin/phpunit -c phpunit.xml
-  - stage: build
-    name: Create phar build
-    script: vendor/bin/phar-builder package -e bin/response2schema -z --name response2schema.phar -o build
-deploy:
-  provider: releases
-  token: $GITHUB_TOKEN
-  file: build/response2schema.phar
-  on:
-    repo: dsuurlant/response2schema
-  cleanup: 'true'
