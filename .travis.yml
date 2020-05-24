@@ -6,7 +6,6 @@ install:
 stages:
 - test
 - build
-- deploy
 jobs:
   include:
   - stage: test
@@ -19,8 +18,7 @@ jobs:
       --gzip -n
 deploy:
   provider: releases
-  api_key:
-    secure: $GITHUB_API_KEY
+  token: $GITHUB_TOKEN
   file: build/response2schema.phar
   on:
     repo: dsuurlant/response2schema
