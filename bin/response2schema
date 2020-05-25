@@ -9,7 +9,7 @@ foreach ([__DIR__ . '/../../../autoload.php', __DIR__ . '/../vendor/autoload.php
     }
 }
 
-function showHelp() {
+function showHelp(int $exit) {
     fwrite(STDOUT, <<<OUTPUT
 Usage: response2schema [inputfile] [outputfile]
 
@@ -27,11 +27,24 @@ Example:
 
 OUTPUT
     );
-    exit(0);
+    exit($exit);
+}
+
+function error(string $message) {
+    fwrite(STDERR, "\e[31m" . $message . "\e[0m" . PHP_EOL);
+    showHelp(1);
+}
+
+function success(string $message) {
+    fwrite(STDOUT, "\e[32m" . $message . "\e[0m" . PHP_EOL);
 }
 
 $inputPath = null;
 $outputPath = null;
+
+if (count($argv) < 3) {
+    error("Missing input and output file arguments!");
+}
 
 foreach($argv as $k => $arg) {
     if ($k === 0) {
@@ -41,11 +54,10 @@ foreach($argv as $k => $arg) {
     // Input
     if ($k === 1) {
         if (!is_string($arg)) {
-            echo "Input file path invalid.";
-            exit(1);
+            error("Please specify an input file.");
         }
         if ($arg === 'help' || $arg === '--help') {
-            showHelp();
+            showHelp(0);
         }
         $inputPath = $arg;
     }
@@ -53,18 +65,21 @@ foreach($argv as $k => $arg) {
     // Output
     if ($k === 2) {
         if (!is_string($arg)) {
-            echo 'Output file path invalid.';
-            exit(1);
+            error("Please specify an output file.");
         }
         $outputPath = $arg;
     }
 }
 
+if ($inputPath === null || $outputPath === null) {
+    error("Missing input and output file arguments!");
+}
+
 try {
     \DSuurlant\Response2Schema\Response2Schema::generate($inputPath, $outputPath);
-    fwrite(STDOUT, "Generation successful." . PHP_EOL);
+    success("Generation successful!");
 } catch (DomainException $exception) {
-    fwrite(STDERR, $exception->getMessage() . PHP_EOL);
+    error($exception->getMessage());
 }
 
 exit(0);

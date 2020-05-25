@@ -14,6 +14,8 @@ Supports generating an OpenAPI spec in `JSON` or `yaml`.
 
 `composer require --dev dsuurlant/response2schema`
 
+Or download the phar from the [Releases page](https://github.com/dsuurlant/response2schema/releases).
+
 # Usage
 
 Just point Response2Schema to your input json file, and tell it where to put the output OpenAPI spec.
@@ -21,6 +23,10 @@ Just point Response2Schema to your input json file, and tell it where to put the
 It will automatically format it to json or yaml based on the extension of the output path.
 
 `./vendor/bin/response2schema response.json openapi.yaml`
+
+Or when using the phar:
+
+`./response2schema.phar response.json openapi.yaml`
 
 # Example
 
