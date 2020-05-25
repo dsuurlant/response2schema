@@ -5,14 +5,14 @@
 A quick 'n easy way to generate your OpenAPI spec based on a JSON object. Useful for bootstrapping your component
  schemas. This is intended to be a starting point for writing your specification, as the tool cannot infer types such
   as enum, oneOf, maximum/minimum, and so on. It also does not support generating endpoints or error responses. All
-   it does is take your JSON object and turns it into an OpenAPI schema object, along with a simply example spec that
+   it does is take your JSON object and turns it into an OpenAPI schema object, along with a simple example spec that
     you can expand on.
     
 Supports generating an OpenAPI spec in `JSON` or `yaml`.
 
 # Installation
 
-`composer require --dev dsuurlant/response2schema`
+`composer require dsuurlant/response2schema`
 
 Or download the phar from the [Releases page](https://github.com/dsuurlant/response2schema/releases).
 
