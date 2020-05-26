@@ -35,5 +35,8 @@
     },
     "scripts": {
         "buildphar": "vendor/bin/phar-builder package -e bin/response2schema -z --name response2schema.phar -o build && chmod 755 build/response2schema.phar"
-    }
+    },
+    "bin": [
+        "bin/response2schema"
+    ]
 }
