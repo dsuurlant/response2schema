@@ -1,7 +1,5 @@
 # Response2Schema
 
-![Travis Build Status](https://travis-ci.org/dsuurlant/response2schema.svg?branch=master)
-
 A quick 'n easy way to generate your OpenAPI spec based on a JSON object. Useful for bootstrapping your component
  schemas. This is intended to be a starting point for writing your specification, as the tool cannot infer types such
   as enum, oneOf, maximum/minimum, and so on. It also does not support generating endpoints or error responses. All
