@@ -1,0 +1,23 @@
+{
+  "force-autodiscovery": true,
+  "exclude-composer-files": false,
+  "finder": [
+    {
+      "notName": "/LICENSE|.*\\.md|.*\\.dist|Makefile|composer\\.json|composer\\.lock/",
+      "exclude": [
+        "test",
+        "tests",
+        "vendor-bin"
+      ],
+      "in": "vendor"
+    },
+    {
+      "name": "LICENSE.md",
+      "in": "."
+    },
+    {
+      "name": "NOTICE.md",
+      "in": "."
+    }
+  ]
+}
