@@ -10,8 +10,7 @@ use PHPUnit\Framework\TestCase;
 
 final class DefaultSpecTest extends TestCase
 {
-    /** @test */
-    public function it_should_have_a_valid_open_api_spec(): void
+    public function test_it_should_have_a_valid_open_api_spec(): void
     {
         $schema = SchemaGuesser::guess(['id' => 1, 'name' => 'test']);
         $spec = DefaultSpec::default($schema);

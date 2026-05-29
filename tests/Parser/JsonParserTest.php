@@ -12,8 +12,7 @@ use PHPUnit\Framework\TestCase;
 
 final class JsonParserTest extends TestCase
 {
-    /** @test */
-    public function it_should_throw_an_exception_when_body_is_not_valid_json()
+    public function test_it_should_throw_an_exception_when_body_is_not_valid_json()
     {
         $invalidJson = '[{"notvalid";}]';
 
@@ -22,8 +21,7 @@ final class JsonParserTest extends TestCase
         $sut = JsonParser::parse($invalidJson);
     }
 
-    /** @test */
-    public function it_should_return_an_api_spec_for_valid_json(): void
+    public function test_it_should_return_an_api_spec_for_valid_json(): void
     {
         $validJson = '{"id":1}';
         $sut = JsonParser::parse($validJson);

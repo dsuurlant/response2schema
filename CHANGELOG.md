@@ -2,18 +2,24 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.6](https://github.com/dsuurlant/response2schema/tree/1.0.6) (2026-05-29)
+
+### Changed
+- Updated dependencies
+- Updated PHPUnit config and test names
+
 ## [1.0.5](https://github.com/dsuurlant/response2schema/tree/1.0.5) (2024-11-26)
 
 ### Added
 - Added NOTICE.md
 - Added CHANGELOG.md
 - Added box.json.dist for PHAR packaging
- 
+
 ### Changed
 - Updated .gitignore
 - Updated LICENSE.md
 - Updated author email
- 
+
 ### Removed
 - Removed `clue/phar-composer` as it is no longer updated and `symfony/process` needs a security fix
 

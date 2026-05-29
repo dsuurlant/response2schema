@@ -11,8 +11,7 @@ use PHPUnit\Framework\TestCase;
 
 final class SchemaGuesserTest extends TestCase
 {
-    /** @test */
-    public function it_should_correctly_guess_the_users_schema(): void
+    public function test_it_should_correctly_guess_the_users_schema(): void
     {
         $fixture = UserFixture::many(10);
         $sut = SchemaGuesser::guess($fixture);
@@ -99,8 +98,7 @@ final class SchemaGuesserTest extends TestCase
         TestCase::assertSame($expected, $sut);
     }
 
-    /** @test */
-    public function it_should_correctly_guess_the_order_schema(): void
+    public function test_it_should_correctly_guess_the_order_schema(): void
     {
         $fixture = OrderFixture::single();
         $sut = SchemaGuesser::guess($fixture);
